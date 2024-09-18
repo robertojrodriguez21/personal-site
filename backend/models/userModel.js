@@ -33,6 +33,13 @@ const userSchema = mongoose.Schema(
         required: false,
       },
     ],
+    bookmarks: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Post",
+        required: false,
+      },
+    ],
     posts: [
       {
         type: mongoose.Schema.Types.ObjectId,
