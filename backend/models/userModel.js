@@ -74,4 +74,4 @@ const userSchema = mongoose.Schema(
 
 const usersDB = mongoose.connection.useDb("users");
 
-export const Experience = usersDB.model("User", userSchema);
+export const User = usersDB.model("User", userSchema);
