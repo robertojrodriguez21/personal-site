@@ -2,67 +2,30 @@ import mongoose from "mongoose";
 
 const postSchema = mongoose.Schema(
   {
-    firstName: {
+    title: {
       type: String,
       required: true,
     },
-    middleName: {
-      type: String,
-      required: false,
-    },
-    lastName: {
+    body: {
       type: String,
       required: true,
     },
-    email: {
-      type: String,
+    user_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
       required: true,
     },
-    password: {
-      type: String,
-      required: true,
-    },
-    accessType: {
-      type: Number,
-      required: true,
-    },
-    experiences: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Experience",
-        required: false,
-      },
-    ],
-    bookmarks: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Post",
-        required: false,
-      },
-    ],
-    posts: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Post",
-        required: false,
-      },
-    ],
-    comments: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Comment",
-        required: false,
-      },
-    ],
     likes: [
       {
         type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
         required: false,
       },
     ],
     dislikes: [
       {
         type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
         required: false,
       },
     ],
