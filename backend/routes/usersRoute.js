@@ -14,7 +14,7 @@ router.post("/", async (request, response) => {
     ) {
       return response.status(400).send({
         message:
-          "Send all required fields: firstName, lastName, email, password, accessType",
+          "Send all required fields: firstName, lastName, email, password",
       });
     }
 
@@ -69,29 +69,28 @@ router.get("/:id", async (request, response) => {
 router.put("/:id", async (request, response) => {
   try {
     if (
-      !request.body.title ||
-      !request.body.startDate ||
-      !request.body.body ||
-      !request.body.type ||
-      !request.body.user_id
+      !request.body.firstName ||
+      !request.body.lastName ||
+      !request.body.email ||
+      !request.body.password
     ) {
       return response.status(400).send({
         message:
-          "Send all required fields: title, startDate, body, type, user_id",
+          "Send all required fields: firstName, lastName, email, password",
       });
     }
 
     const { id } = request.params;
 
-    const result = await Experience.findByIdAndUpdate(id, request.body);
+    const result = await User.findByIdAndUpdate(id, request.body);
 
     if (!result) {
-      return response.status(404).json({ message: "Experience not found" });
+      return response.status(404).json({ message: "User not found" });
     }
 
     return response
       .status(200)
-      .send({ message: "Experience updated successfully" });
+      .send({ message: "User updated successfully" });
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });
