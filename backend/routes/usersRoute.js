@@ -102,15 +102,15 @@ router.delete("/:id", async (request, response) => {
   try {
     const { id } = request.params;
 
-    const result = await Experience.findByIdAndDelete(id);
+    const result = await User.findByIdAndDelete(id);
 
     if (!result) {
-      return response.status(404).json({ message: "Experience not found" });
+      return response.status(404).json({ message: "User not found" });
     }
 
     return response
       .status(200)
-      .send({ message: "Experience deleted successfully" });
+      .send({ message: "User deleted successfully" });
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });
