@@ -7,6 +7,7 @@ dotenv.config();
 // Route imports
 import experiencesRoute from "./routes/experiencesRoute.js";
 import usersRoute from "./routes/usersRoute.js";
+import postsRoute from "./routes/postsRoute.js";
 
 // Server setup
 const app = express();
@@ -22,6 +23,7 @@ app.use(cors());
 // API call routes
 app.use("/users", usersRoute);
 app.use("/experiences", experiencesRoute);
+app.use("/posts", postsRoute);
 
 // Establishing database and server connections
 const MONGO_DB_URL = process.env.MONGO_DB_URL;
