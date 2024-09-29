@@ -1,5 +1,5 @@
 import express from "express";
-import { Experience } from "../models/experienceModel.js";
+import { User } from "../models/userModel.js";
 
 const router = express.Router();
 
@@ -7,32 +7,30 @@ const router = express.Router();
 router.post("/", async (request, response) => {
   try {
     if (
-      !request.body.title ||
-      !request.body.startDate ||
-      !request.body.body ||
-      !request.body.type ||
-      !request.body.user_id
+      !request.body.firstName ||
+      !request.body.lastName ||
+      !request.body.email ||
+      !request.body.password ||
+      !request.body.accessType
     ) {
       return response.status(400).send({
         message:
-          "Send all required fields: title, startDate, body, type, user_id",
+          "Send all required fields: firstName, lastName, email, password, accessType",
       });
     }
 
-    const newExperience = {
-      title: request.body.title,
-      company: request.body.company,
-      location: request.body.location,
-      startDate: request.body.startDate,
-      endDate: request.body.endDate,
-      body: request.body.body,
-      type: request.body.type,
-      user_id: request.body.user_id,
+    const newUser = {
+      firstName: request.body.firstName,
+      middleName: request.body.middleName,
+      lastName: request.body.lastName,
+      email: request.body.email,
+      password: request.body.password,
+      accessType: 1,
     };
 
-    const experience = await Experience.create(newExperience);
+    const user = await User.create(newUser);
 
-    return response.status(201).send(experience);
+    return response.status(201).send(user);
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });

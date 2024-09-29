@@ -22,7 +22,7 @@ const userSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    access: {
+    accessType: {
       type: Number,
       required: true,
     },
