@@ -10,8 +10,7 @@ router.post("/", async (request, response) => {
       !request.body.firstName ||
       !request.body.lastName ||
       !request.body.email ||
-      !request.body.password ||
-      !request.body.accessType
+      !request.body.password 
     ) {
       return response.status(400).send({
         message:
