@@ -3,40 +3,38 @@ import { Post } from "../models/postModel.js";
 
 const router = express.Router();
 
-// Create ONE
+// CREATE
+// Create One
 router.post("/", async (request, response) => {
   try {
     if (
-      !request.body.firstName ||
-      !request.body.lastName ||
-      !request.body.email ||
-      !request.body.password 
+      !request.body.title ||
+      !request.body.body ||
+      !request.body.user_id 
     ) {
       return response.status(400).send({
         message:
-          "Send all required fields: firstName, lastName, email, password",
+          "Send all required fields: title, body, user_id",
       });
     }
 
-    const newUser = {
-      firstName: request.body.firstName,
-      middleName: request.body.middleName,
-      lastName: request.body.lastName,
-      email: request.body.email,
-      password: request.body.password,
-      accessType: 1,
+    const newPost = {
+      title: request.body.title,
+      body: request.body.body,
+      user_id: request.body.user_id,
     };
 
-    const user = await User.create(newUser);
+    const post = await User.create(newPost);
 
-    return response.status(201).send(user);
+    return response.status(201).send(post);
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });
   }
 });
 
-// Read ALL
+// READ
+// Read All
 router.get("/", async (request, response) => {
   try {
     const users = await User.find({});
@@ -51,7 +49,7 @@ router.get("/", async (request, response) => {
   }
 });
 
-// Read ONE
+// Read One
 router.get("/:id", async (request, response) => {
   try {
     const { id } = request.params;
@@ -65,7 +63,8 @@ router.get("/:id", async (request, response) => {
   }
 });
 
-// Update ONE
+// UPDATE
+// Update One
 router.put("/:id", async (request, response) => {
   try {
     if (
@@ -97,7 +96,8 @@ router.put("/:id", async (request, response) => {
   }
 });
 
-// Delete ONE
+// DELETE
+// Delete One
 router.delete("/:id", async (request, response) => {
   try {
     const { id } = request.params;
