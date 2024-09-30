@@ -50,13 +50,13 @@ router.get("/", async (request, response) => {
 });
 
 // Read One
-router.get("/:post_id", async (request, response) => {
+router.get("/:comment_id", async (request, response) => {
   try {
-    const { post_id } = request.params;
+    const { comment_id } = request.params;
 
-    const post = await Post.findById(post_id);
+    const comment = await Comment.findById(comment_id);
 
-    return response.status(200).send(post);
+    return response.status(200).send(comment);
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });
