@@ -37,11 +37,11 @@ router.post("/", async (request, response) => {
 // Read All
 router.get("/", async (request, response) => {
   try {
-    const users = await User.find({});
+    const posts = await Post.find({});
 
     return response.status(200).send({
-      count: users.length,
-      data: users,
+      count: posts.length,
+      data: posts,
     });
   } catch (error) {
     console.log(error.message);
