@@ -1,5 +1,5 @@
 import express from "express";
-import { User } from "../models/userModel.js";
+import { Post } from "../models/postModel.js";
 
 const router = express.Router();
 
@@ -8,29 +8,25 @@ const router = express.Router();
 router.post("/", async (request, response) => {
   try {
     if (
-      !request.body.firstName ||
-      !request.body.lastName ||
-      !request.body.email ||
-      !request.body.password 
+      !request.body.title ||
+      !request.body.body ||
+      !request.body.user_id 
     ) {
       return response.status(400).send({
         message:
-          "Send all required fields: firstName, lastName, email, password",
+          "Send all required fields: title, body, user_id",
       });
     }
 
-    const newUser = {
-      firstName: request.body.firstName,
-      middleName: request.body.middleName,
-      lastName: request.body.lastName,
-      email: request.body.email,
-      password: request.body.password,
-      accessType: 1,
+    const newPost = {
+      title: request.body.title,
+      body: request.body.body,
+      user_id: request.body.user_id,
     };
 
-    const user = await User.create(newUser);
+    const post = await Post.create(newPost);
 
-    return response.status(201).send(user);
+    return response.status(201).send(post);
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });
@@ -41,11 +37,11 @@ router.post("/", async (request, response) => {
 // Read All
 router.get("/", async (request, response) => {
   try {
-    const users = await User.find({});
+    const posts = await Post.find({});
 
     return response.status(200).send({
-      count: users.length,
-      data: users,
+      count: posts.length,
+      data: posts,
     });
   } catch (error) {
     console.log(error.message);
@@ -54,13 +50,13 @@ router.get("/", async (request, response) => {
 });
 
 // Read One
-router.get("/:user_id", async (request, response) => {
+router.get("/:post_id", async (request, response) => {
   try {
-    const { user_id } = request.params;
+    const { post_id } = request.params;
 
-    const user = await User.findById(user_id);
+    const post = await Post.findById(post_id);
 
-    return response.status(200).send(user);
+    return response.status(200).send(post);
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });
@@ -69,31 +65,30 @@ router.get("/:user_id", async (request, response) => {
 
 // UPDATE
 // Update One
-router.put("/:user_id", async (request, response) => {
+router.put("/:post_id", async (request, response) => {
   try {
     if (
-      !request.body.firstName ||
-      !request.body.lastName ||
-      !request.body.email ||
-      !request.body.password
+      !request.body.title ||
+      !request.body.body ||
+      !request.body.user_id 
     ) {
       return response.status(400).send({
         message:
-          "Send all required fields: firstName, lastName, email, password",
+          "Send all required fields: title, body, user_id",
       });
     }
 
-    const { user_id } = request.params;
+    const { post_id } = request.params;
 
-    const result = await User.findByIdAndUpdate(user_id, request.body);
+    const result = await Post.findByIdAndUpdate(post_id, request.body);
 
     if (!result) {
-      return response.status(404).json({ message: "User not found" });
+      return response.status(404).json({ message: "Post not found" });
     }
 
     return response
       .status(200)
-      .send({ message: "User updated successfully" });
+      .send({ message: "Post updated successfully" });
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });
@@ -102,19 +97,19 @@ router.put("/:user_id", async (request, response) => {
 
 // DELETE
 // Delete One
-router.delete("/:user_id", async (request, response) => {
+router.delete("/:post_id", async (request, response) => {
   try {
-    const { user_id } = request.params;
+    const { post_id } = request.params;
 
-    const result = await User.findByIdAndDelete(user_id);
+    const result = await Post.findByIdAndDelete(post_id);
 
     if (!result) {
-      return response.status(404).json({ message: "User not found" });
+      return response.status(404).json({ message: "Post not found" });
     }
 
     return response
       .status(200)
-      .send({ message: "User deleted successfully" });
+      .send({ message: "Post deleted successfully" });
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });
