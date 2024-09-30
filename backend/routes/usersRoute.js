@@ -52,11 +52,11 @@ router.get("/", async (request, response) => {
 });
 
 // Read ONE
-router.get("/:id", async (request, response) => {
+router.get("/:user_id", async (request, response) => {
   try {
-    const { id } = request.params;
+    const { user_id } = request.params;
 
-    const user = await User.findById(id);
+    const user = await User.findById(user_id);
 
     return response.status(200).send(user);
   } catch (error) {
@@ -66,7 +66,7 @@ router.get("/:id", async (request, response) => {
 });
 
 // Update ONE
-router.put("/:id", async (request, response) => {
+router.put("/:user_id", async (request, response) => {
   try {
     if (
       !request.body.firstName ||
@@ -80,9 +80,9 @@ router.put("/:id", async (request, response) => {
       });
     }
 
-    const { id } = request.params;
+    const { user_id } = request.params;
 
-    const result = await User.findByIdAndUpdate(id, request.body);
+    const result = await User.findByIdAndUpdate(user_id, request.body);
 
     if (!result) {
       return response.status(404).json({ message: "User not found" });
@@ -98,11 +98,11 @@ router.put("/:id", async (request, response) => {
 });
 
 // Delete ONE
-router.delete("/:id", async (request, response) => {
+router.delete("/:user_id", async (request, response) => {
   try {
-    const { id } = request.params;
+    const { user_id } = request.params;
 
-    const result = await User.findByIdAndDelete(id);
+    const result = await User.findByIdAndDelete(user_id);
 
     if (!result) {
       return response.status(404).json({ message: "User not found" });
