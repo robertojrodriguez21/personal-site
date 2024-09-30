@@ -3,7 +3,8 @@ import { Experience } from "../models/experienceModel.js";
 
 const router = express.Router();
 
-// Create ONE
+// CREATE
+// Create One
 router.post("/", async (request, response) => {
   try {
     if (
@@ -39,7 +40,8 @@ router.post("/", async (request, response) => {
   }
 });
 
-// Read ALL
+// READ
+// Read All
 router.get("/", async (request, response) => {
   try {
     const experiences = await Experience.find({});
@@ -54,7 +56,7 @@ router.get("/", async (request, response) => {
   }
 });
 
-// Read ONE
+// Read One
 router.get("/:experience_id", async (request, response) => {
   try {
     const { experience_id } = request.params;
@@ -68,7 +70,8 @@ router.get("/:experience_id", async (request, response) => {
   }
 });
 
-// Update ONE
+// UPDATE
+// Update One
 router.put("/:experience_id", async (request, response) => {
   try {
     if (
@@ -101,7 +104,8 @@ router.put("/:experience_id", async (request, response) => {
   }
 });
 
-// Delete ONE
+// DELETE
+// Delete One
 router.delete("/:experience_id", async (request, response) => {
   try {
     const { experience_id } = request.params;
