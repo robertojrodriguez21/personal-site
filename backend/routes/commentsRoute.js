@@ -65,22 +65,22 @@ router.get("/:comment_id", async (request, response) => {
 
 // UPDATE
 // Update One
-router.put("/:post_id", async (request, response) => {
+router.put("/:comment_id", async (request, response) => {
   try {
     if (
-      !request.body.title ||
       !request.body.body ||
+      !request.body.post_id ||
       !request.body.user_id 
     ) {
       return response.status(400).send({
         message:
-          "Send all required fields: title, body, user_id",
+          "Send all required fields: body, post_id, user_id",
       });
     }
 
-    const { post_id } = request.params;
+    const { comment_id } = request.params;
 
-    const result = await Post.findByIdAndUpdate(post_id, request.body);
+    const result = await Comment.findByIdAndUpdate(comment_id, request.body);
 
     if (!result) {
       return response.status(404).json({ message: "Post not found" });
