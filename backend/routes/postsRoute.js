@@ -65,31 +65,30 @@ router.get("/:post_id", async (request, response) => {
 
 // UPDATE
 // Update One
-router.put("/:id", async (request, response) => {
+router.put("/:post_id", async (request, response) => {
   try {
     if (
-      !request.body.firstName ||
-      !request.body.lastName ||
-      !request.body.email ||
-      !request.body.password
+      !request.body.title ||
+      !request.body.body ||
+      !request.body.user_id 
     ) {
       return response.status(400).send({
         message:
-          "Send all required fields: firstName, lastName, email, password",
+          "Send all required fields: title, body, user_id",
       });
     }
 
-    const { id } = request.params;
+    const { post_id } = request.params;
 
-    const result = await User.findByIdAndUpdate(id, request.body);
+    const result = await Post.findByIdAndUpdate(post_id, request.body);
 
     if (!result) {
-      return response.status(404).json({ message: "User not found" });
+      return response.status(404).json({ message: "Post not found" });
     }
 
     return response
       .status(200)
-      .send({ message: "User updated successfully" });
+      .send({ message: "Post updated successfully" });
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });
