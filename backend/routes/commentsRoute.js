@@ -97,19 +97,19 @@ router.put("/:comment_id", async (request, response) => {
 
 // DELETE
 // Delete One
-router.delete("/:post_id", async (request, response) => {
+router.delete("/:comment_id", async (request, response) => {
   try {
-    const { post_id } = request.params;
+    const { comment_id } = request.params;
 
-    const result = await Post.findByIdAndDelete(post_id);
+    const result = await Comment.findByIdAndDelete(comment_id);
 
     if (!result) {
-      return response.status(404).json({ message: "Post not found" });
+      return response.status(404).json({ message: "Comment not found" });
     }
 
     return response
       .status(200)
-      .send({ message: "Post deleted successfully" });
+      .send({ message: "Comment deleted successfully" });
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });
