@@ -1,13 +1,14 @@
 import mongoose from "mongoose";
 
-const postSchema = mongoose.Schema(
+const commentSchema = mongoose.Schema(
   {
-    title: {
+    body: {
       type: String,
       required: true,
     },
-    body: {
-      type: String,
+    post_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Post",
       required: true,
     },
     user_id: {
@@ -35,6 +36,6 @@ const postSchema = mongoose.Schema(
   }
 );
 
-const postsDB = mongoose.connection.useDb("posts");
+const commentsDB = mongoose.connection.useDb("comments");
 
-export const Post = postsDB.model("Post", postSchema);
+export const Comment = commentsDB.model("Comment", commentSchema);
