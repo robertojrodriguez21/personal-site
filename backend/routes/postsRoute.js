@@ -97,19 +97,19 @@ router.put("/:post_id", async (request, response) => {
 
 // DELETE
 // Delete One
-router.delete("/:id", async (request, response) => {
+router.delete("/:post_id", async (request, response) => {
   try {
-    const { id } = request.params;
+    const { post_id } = request.params;
 
-    const result = await User.findByIdAndDelete(id);
+    const result = await Post.findByIdAndDelete(post_id);
 
     if (!result) {
-      return response.status(404).json({ message: "User not found" });
+      return response.status(404).json({ message: "Post not found" });
     }
 
     return response
       .status(200)
-      .send({ message: "User deleted successfully" });
+      .send({ message: "Post deleted successfully" });
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });
