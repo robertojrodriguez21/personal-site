@@ -5,9 +5,10 @@ import dotenv from "dotenv";
 dotenv.config();
 
 // Route imports
-import experiencesRoute from "./routes/experiencesRoute.js";
 import usersRoute from "./routes/usersRoute.js";
+import experiencesRoute from "./routes/experiencesRoute.js";
 import postsRoute from "./routes/postsRoute.js";
+import commentsRoute from "./routes/commentsRoute.js";
 
 // Server setup
 const app = express();
@@ -24,6 +25,7 @@ app.use(cors());
 app.use("/users", usersRoute);
 app.use("/experiences", experiencesRoute);
 app.use("/posts", postsRoute);
+app.use("/comments", commentsRoute);
 
 // Establishing database and server connections
 const MONGO_DB_URL = process.env.MONGO_DB_URL;
