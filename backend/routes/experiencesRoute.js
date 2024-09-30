@@ -55,11 +55,11 @@ router.get("/", async (request, response) => {
 });
 
 // Read ONE
-router.get("/:id", async (request, response) => {
+router.get("/:experience_id", async (request, response) => {
   try {
-    const { id } = request.params;
+    const { experience_id } = request.params;
 
-    const experience = await Experience.findById(id);
+    const experience = await Experience.findById(experience_id);
 
     return response.status(200).send(experience);
   } catch (error) {
@@ -69,7 +69,7 @@ router.get("/:id", async (request, response) => {
 });
 
 // Update ONE
-router.put("/:id", async (request, response) => {
+router.put("/:experience_id", async (request, response) => {
   try {
     if (
       !request.body.title ||
@@ -84,9 +84,9 @@ router.put("/:id", async (request, response) => {
       });
     }
 
-    const { id } = request.params;
+    const { experience_id } = request.params;
 
-    const result = await Experience.findByIdAndUpdate(id, request.body);
+    const result = await Experience.findByIdAndUpdate(experience_id, request.body);
 
     if (!result) {
       return response.status(404).json({ message: "Experience not found" });
@@ -102,11 +102,11 @@ router.put("/:id", async (request, response) => {
 });
 
 // Delete ONE
-router.delete("/:id", async (request, response) => {
+router.delete("/:experience_id", async (request, response) => {
   try {
-    const { id } = request.params;
+    const { experience_id } = request.params;
 
-    const result = await Experience.findByIdAndDelete(id);
+    const result = await Experience.findByIdAndDelete(experience_id);
 
     if (!result) {
       return response.status(404).json({ message: "Experience not found" });
