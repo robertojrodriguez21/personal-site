@@ -24,7 +24,7 @@ router.post("/", async (request, response) => {
       user_id: request.body.user_id,
     };
 
-    const post = await User.create(newPost);
+    const post = await Post.create(newPost);
 
     return response.status(201).send(post);
   } catch (error) {
