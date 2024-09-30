@@ -1,5 +1,5 @@
 import express from "express";
-import { Post } from "../models/postModel.js";
+import { Comment } from "../models/commentModel.js";
 
 const router = express.Router();
 
@@ -8,25 +8,25 @@ const router = express.Router();
 router.post("/", async (request, response) => {
   try {
     if (
-      !request.body.title ||
       !request.body.body ||
+      !request.body.post_id ||
       !request.body.user_id 
     ) {
       return response.status(400).send({
         message:
-          "Send all required fields: title, body, user_id",
+          "Send all required fields: body, post_id, user_id",
       });
     }
 
-    const newPost = {
-      title: request.body.title,
+    const newComment = {
       body: request.body.body,
+      post_id: request.body.post_id,
       user_id: request.body.user_id,
     };
 
-    const post = await Post.create(newPost);
+    const comment = await Comment.create(newComment);
 
-    return response.status(201).send(post);
+    return response.status(201).send(comment);
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });
