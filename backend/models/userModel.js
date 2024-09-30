@@ -54,17 +54,33 @@ const userSchema = mongoose.Schema(
         required: false,
       },
     ],
-    likes: [
+    postLikes: [
       {
         type: mongoose.Schema.Types.ObjectId,
+        ref: "Post",
         required: false,
       },
     ],
-    dislikes: [
+    postDislikes: [
       {
         type: mongoose.Schema.Types.ObjectId,
+        ref: "Post",
         required: false,
       },
+    ],
+    commentLikes: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Comment",
+        required: false,
+      },
+    ],
+    commentDislikes: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Comment",
+        required: false,
+      }
     ],
   },
   {
