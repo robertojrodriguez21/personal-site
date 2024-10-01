@@ -360,6 +360,26 @@ router.put("/addPost/:user_id/:post_id", async (request, response) => {
   }
 });
 
+// Update One - remove one post from one user
+router.put("/removePost/:user_id/:post_id", async (request, response) => {
+  try {
+    const { user_id, post_id } = request.params;
+
+    const result = await User.findByIdAndUpdate(user_id, { $pull: { posts: post_id } });
+
+    if (!result) {
+      return response.status(404).json({ message: "User not found" });
+    }
+
+    return response
+      .status(200)
+      .send({ message: "User updated successfully" });
+  } catch (error) {
+    console.log(error.message);
+    response.status(500).send({ message: error.message });
+  }
+});
+
 // DELETE
 // Delete One
 router.delete("/deleteOne/:user_id", async (request, response) => {
