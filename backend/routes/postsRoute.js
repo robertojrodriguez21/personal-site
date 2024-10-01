@@ -95,6 +95,26 @@ router.put("/updateOne/:post_id", async (request, response) => {
   }
 });
 
+// Update One - add one like to one post
+router.put("/addLike/:post_id/:user_id", async (request, response) => {
+  try {
+    const { post_id, user_id } = request.params;
+
+    const result = await User.findByIdAndUpdate(post_id, { $addToSet: { likes: user_id } });
+
+    if (!result) {
+      return response.status(404).json({ message: "Post not found" });
+    }
+
+    return response
+      .status(200)
+      .send({ message: "Post updated successfully" });
+  } catch (error) {
+    console.log(error.message);
+    response.status(500).send({ message: error.message });
+  }
+});
+
 // DELETE
 // Delete One
 router.delete("/deleteOne/:post_id", async (request, response) => {
