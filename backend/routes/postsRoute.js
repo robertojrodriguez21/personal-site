@@ -135,6 +135,27 @@ router.put("/removeLike/:post_id/:user_id", async (request, response) => {
   }
 });
 
+// Update One - add one dislike to one post
+router.put("/addDislike/:post_id/:user_id", async (request, response) => {
+  try {
+    const { post_id, user_id } = request.params;
+
+    const result = await Post.findByIdAndUpdate(post_id, { $addToSet: { dislikes: user_id } });
+
+    if (!result) {
+      return response.status(404).json({ message: "Post not found" });
+    }
+
+    return response
+      .status(200)
+      .send({ message: "Post updated successfully" });
+  } catch (error) {
+    console.log(error.message);
+    response.status(500).send({ message: error.message });
+  }
+});
+
+
 // DELETE
 // Delete One
 router.delete("/deleteOne/:post_id", async (request, response) => {
