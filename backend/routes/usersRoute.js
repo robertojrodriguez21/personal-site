@@ -103,9 +103,9 @@ router.put("/:user_id", async (request, response) => {
 // Update One - add post like to user
 router.put("/addPostLike/:user_id/:post_id", async (request, response) => {
   try {
-    const { user_id } = request.params;
+    const { user_id, post_id } = request.params;
 
-    const result = await User.findByIdAndUpdate(user_id, { $push: { postLikes: request.body.post_id  } });
+    const result = await User.findByIdAndUpdate(user_id, { $push: { postLikes: post_id  } });
 
     if (!result) {
       return response.status(404).json({ message: "User not found" });
