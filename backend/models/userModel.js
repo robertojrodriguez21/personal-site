@@ -17,6 +17,8 @@ const userSchema = mongoose.Schema(
     email: {
       type: String,
       required: true,
+      unique: true,
+      lowercase: true,
     },
     password: {
       type: String,
@@ -80,7 +82,7 @@ const userSchema = mongoose.Schema(
         type: mongoose.Schema.Types.ObjectId,
         ref: "Comment",
         required: false,
-      }
+      },
     ],
     likes: [
       {
@@ -92,7 +94,7 @@ const userSchema = mongoose.Schema(
       {
         type: mongoose.Schema.Types.ObjectId,
         required: false,
-      }
+      },
     ],
   },
   {
