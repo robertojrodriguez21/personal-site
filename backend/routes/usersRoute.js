@@ -101,7 +101,7 @@ router.put("/:user_id", async (request, response) => {
 });
 
 // Update One - add post like to user
-router.put("/:user_id/postLikesAdd/:post_id", async (request, response) => {
+router.put("/addPostLike/:user_id/:post_id", async (request, response) => {
   try {
     const { user_id } = request.params;
 
