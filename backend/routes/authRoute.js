@@ -7,18 +7,6 @@ const router = express.Router();
 // Create One User
 router.post("/createUser", async (request, response) => {
   try {
-    if (
-      !request.body.firstName ||
-      !request.body.lastName ||
-      !request.body.email ||
-      !request.body.password
-    ) {
-      return response.status(400).send({
-        message:
-          "Send all required fields: firstName, lastName, email, password",
-      });
-    }
-
     const newUser = {
       firstName: request.body.firstName,
       middleName: request.body.middleName,
