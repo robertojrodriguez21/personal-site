@@ -100,7 +100,7 @@ router.put("/:user_id", async (request, response) => {
   }
 });
 
-// Update One - add one post like to user
+// Update One - add one post like to one user
 router.put("/addPostLike/:user_id/:post_id", async (request, response) => {
   try {
     const { user_id, post_id } = request.params;
@@ -120,7 +120,7 @@ router.put("/addPostLike/:user_id/:post_id", async (request, response) => {
   }
 });
 
-// Update One - add one post like to user
+// Update One - remove one post like from one user
 router.put("/removePostLike/:user_id/:post_id", async (request, response) => {
   try {
     const { user_id, post_id } = request.params;
@@ -140,11 +140,32 @@ router.put("/removePostLike/:user_id/:post_id", async (request, response) => {
   }
 });
 
+// Update One - add one post dislike to one user
 router.put("/addPostDislike/:user_id/:post_id", async (request, response) => {
   try {
     const { user_id, post_id } = request.params;
 
     const result = await User.findByIdAndUpdate(user_id, { $addToSet: { postDislikes: post_id, dislikes: post_id } });
+
+    if (!result) {
+      return response.status(404).json({ message: "User not found" });
+    }
+
+    return response
+      .status(200)
+      .send({ message: "User updated successfully" });
+  } catch (error) {
+    console.log(error.message);
+    response.status(500).send({ message: error.message });
+  }
+});
+
+// Update One - remove one post dislike from one user
+router.put("/removePostDislike/:user_id/:post_id", async (request, response) => {
+  try {
+    const { user_id, post_id } = request.params;
+
+    const result = await User.findByIdAndUpdate(user_id, { $pull: { postDislikes: post_id, dislikes: post_id } });
 
     if (!result) {
       return response.status(404).json({ message: "User not found" });
