@@ -155,6 +155,26 @@ router.put("/addDislike/:post_id/:user_id", async (request, response) => {
   }
 });
 
+// Update One - remove one dislike from one post
+router.put("/removeDislike/:post_id/:user_id", async (request, response) => {
+  try {
+    const { post_id, user_id } = request.params;
+
+    const result = await Post.findByIdAndUpdate(post_id, { $pull: { dislikes: user_id } });
+
+    if (!result) {
+      return response.status(404).json({ message: "Post not found" });
+    }
+
+    return response
+      .status(200)
+      .send({ message: "Post updated successfully" });
+  } catch (error) {
+    console.log(error.message);
+    response.status(500).send({ message: error.message });
+  }
+});
+
 
 // DELETE
 // Delete One
