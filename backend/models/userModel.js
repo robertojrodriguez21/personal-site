@@ -82,6 +82,18 @@ const userSchema = mongoose.Schema(
         required: false,
       }
     ],
+    likes: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        required: false,
+      },
+    ],
+    dislikes: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        required: false,
+      }
+    ],
   },
   {
     timestamps: true,
