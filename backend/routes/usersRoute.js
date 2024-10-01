@@ -4,38 +4,6 @@ import { User } from "../models/userModel.js";
 const router = express.Router();
 
 // CREATE
-// Create One
-router.post("/createOne", async (request, response) => {
-  try {
-    if (
-      !request.body.firstName ||
-      !request.body.lastName ||
-      !request.body.email ||
-      !request.body.password 
-    ) {
-      return response.status(400).send({
-        message:
-          "Send all required fields: firstName, lastName, email, password",
-      });
-    }
-
-    const newUser = {
-      firstName: request.body.firstName,
-      middleName: request.body.middleName,
-      lastName: request.body.lastName,
-      email: request.body.email,
-      password: request.body.password,
-      accessType: 1,
-    };
-
-    const user = await User.create(newUser);
-
-    return response.status(201).send(user);
-  } catch (error) {
-    console.log(error.message);
-    response.status(500).send({ message: error.message });
-  }
-});
 
 // READ
 // Read All
@@ -91,9 +59,7 @@ router.put("/updateOne/:user_id", async (request, response) => {
       return response.status(404).json({ message: "User not found" });
     }
 
-    return response
-      .status(200)
-      .send({ message: "User updated successfully" });
+    return response.status(200).send({ message: "User updated successfully" });
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });
@@ -105,15 +71,15 @@ router.put("/addPostLike/:user_id/:post_id", async (request, response) => {
   try {
     const { user_id, post_id } = request.params;
 
-    const result = await User.findByIdAndUpdate(user_id, { $addToSet: { postLikes: post_id, likes: post_id } });
+    const result = await User.findByIdAndUpdate(user_id, {
+      $addToSet: { postLikes: post_id, likes: post_id },
+    });
 
     if (!result) {
       return response.status(404).json({ message: "User not found" });
     }
 
-    return response
-      .status(200)
-      .send({ message: "User updated successfully" });
+    return response.status(200).send({ message: "User updated successfully" });
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });
@@ -125,15 +91,15 @@ router.put("/removePostLike/:user_id/:post_id", async (request, response) => {
   try {
     const { user_id, post_id } = request.params;
 
-    const result = await User.findByIdAndUpdate(user_id, { $pull: { postLikes: post_id, likes: post_id } });
+    const result = await User.findByIdAndUpdate(user_id, {
+      $pull: { postLikes: post_id, likes: post_id },
+    });
 
     if (!result) {
       return response.status(404).json({ message: "User not found" });
     }
 
-    return response
-      .status(200)
-      .send({ message: "User updated successfully" });
+    return response.status(200).send({ message: "User updated successfully" });
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });
@@ -145,15 +111,15 @@ router.put("/addPostDislike/:user_id/:post_id", async (request, response) => {
   try {
     const { user_id, post_id } = request.params;
 
-    const result = await User.findByIdAndUpdate(user_id, { $addToSet: { postDislikes: post_id, dislikes: post_id } });
+    const result = await User.findByIdAndUpdate(user_id, {
+      $addToSet: { postDislikes: post_id, dislikes: post_id },
+    });
 
     if (!result) {
       return response.status(404).json({ message: "User not found" });
     }
 
-    return response
-      .status(200)
-      .send({ message: "User updated successfully" });
+    return response.status(200).send({ message: "User updated successfully" });
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });
@@ -161,119 +127,144 @@ router.put("/addPostDislike/:user_id/:post_id", async (request, response) => {
 });
 
 // Update One - remove one post dislike from one user
-router.put("/removePostDislike/:user_id/:post_id", async (request, response) => {
-  try {
-    const { user_id, post_id } = request.params;
+router.put(
+  "/removePostDislike/:user_id/:post_id",
+  async (request, response) => {
+    try {
+      const { user_id, post_id } = request.params;
 
-    const result = await User.findByIdAndUpdate(user_id, { $pull: { postDislikes: post_id, dislikes: post_id } });
+      const result = await User.findByIdAndUpdate(user_id, {
+        $pull: { postDislikes: post_id, dislikes: post_id },
+      });
 
-    if (!result) {
-      return response.status(404).json({ message: "User not found" });
+      if (!result) {
+        return response.status(404).json({ message: "User not found" });
+      }
+
+      return response
+        .status(200)
+        .send({ message: "User updated successfully" });
+    } catch (error) {
+      console.log(error.message);
+      response.status(500).send({ message: error.message });
     }
-
-    return response
-      .status(200)
-      .send({ message: "User updated successfully" });
-  } catch (error) {
-    console.log(error.message);
-    response.status(500).send({ message: error.message });
   }
-});
+);
 
 // Update One - add one comment like to one user
-router.put("/addCommentLike/:user_id/:comment_id", async (request, response) => {
-  try {
-    const { user_id, comment_id } = request.params;
+router.put(
+  "/addCommentLike/:user_id/:comment_id",
+  async (request, response) => {
+    try {
+      const { user_id, comment_id } = request.params;
 
-    const result = await User.findByIdAndUpdate(user_id, { $addToSet: { commentLikes: comment_id, likes: comment_id } });
+      const result = await User.findByIdAndUpdate(user_id, {
+        $addToSet: { commentLikes: comment_id, likes: comment_id },
+      });
 
-    if (!result) {
-      return response.status(404).json({ message: "User not found" });
+      if (!result) {
+        return response.status(404).json({ message: "User not found" });
+      }
+
+      return response
+        .status(200)
+        .send({ message: "User updated successfully" });
+    } catch (error) {
+      console.log(error.message);
+      response.status(500).send({ message: error.message });
     }
-
-    return response
-      .status(200)
-      .send({ message: "User updated successfully" });
-  } catch (error) {
-    console.log(error.message);
-    response.status(500).send({ message: error.message });
   }
-});
+);
 
 // Update One - remove one comment like from one user
-router.put("/removeCommentLike/:user_id/:comment_id", async (request, response) => {
-  try {
-    const { user_id, comment_id } = request.params;
+router.put(
+  "/removeCommentLike/:user_id/:comment_id",
+  async (request, response) => {
+    try {
+      const { user_id, comment_id } = request.params;
 
-    const result = await User.findByIdAndUpdate(user_id, { $pull: { commentLikes: comment_id, likes: comment_id } });
+      const result = await User.findByIdAndUpdate(user_id, {
+        $pull: { commentLikes: comment_id, likes: comment_id },
+      });
 
-    if (!result) {
-      return response.status(404).json({ message: "User not found" });
+      if (!result) {
+        return response.status(404).json({ message: "User not found" });
+      }
+
+      return response
+        .status(200)
+        .send({ message: "User updated successfully" });
+    } catch (error) {
+      console.log(error.message);
+      response.status(500).send({ message: error.message });
     }
-
-    return response
-      .status(200)
-      .send({ message: "User updated successfully" });
-  } catch (error) {
-    console.log(error.message);
-    response.status(500).send({ message: error.message });
   }
-});
+);
 
 // Update One - add one comment dislike to one user
-router.put("/addCommentDislike/:user_id/:comment_id", async (request, response) => {
-  try {
-    const { user_id, comment_id } = request.params;
+router.put(
+  "/addCommentDislike/:user_id/:comment_id",
+  async (request, response) => {
+    try {
+      const { user_id, comment_id } = request.params;
 
-    const result = await User.findByIdAndUpdate(user_id, { $addToSet: { commentDislikes: comment_id, dislikes: comment_id } });
+      const result = await User.findByIdAndUpdate(user_id, {
+        $addToSet: { commentDislikes: comment_id, dislikes: comment_id },
+      });
 
-    if (!result) {
-      return response.status(404).json({ message: "User not found" });
+      if (!result) {
+        return response.status(404).json({ message: "User not found" });
+      }
+
+      return response
+        .status(200)
+        .send({ message: "User updated successfully" });
+    } catch (error) {
+      console.log(error.message);
+      response.status(500).send({ message: error.message });
     }
-
-    return response
-      .status(200)
-      .send({ message: "User updated successfully" });
-  } catch (error) {
-    console.log(error.message);
-    response.status(500).send({ message: error.message });
   }
-});
+);
 
 // Update One - remove one comment dislike from one user
-router.put("/removeCommentDislike/:user_id/:comment_id", async (request, response) => {
-  try {
-    const { user_id, comment_id } = request.params;
+router.put(
+  "/removeCommentDislike/:user_id/:comment_id",
+  async (request, response) => {
+    try {
+      const { user_id, comment_id } = request.params;
 
-    const result = await User.findByIdAndUpdate(user_id, { $pull: { commentDislikes: comment_id, dislikes: comment_id } });
+      const result = await User.findByIdAndUpdate(user_id, {
+        $pull: { commentDislikes: comment_id, dislikes: comment_id },
+      });
 
-    if (!result) {
-      return response.status(404).json({ message: "User not found" });
+      if (!result) {
+        return response.status(404).json({ message: "User not found" });
+      }
+
+      return response
+        .status(200)
+        .send({ message: "User updated successfully" });
+    } catch (error) {
+      console.log(error.message);
+      response.status(500).send({ message: error.message });
     }
-
-    return response
-      .status(200)
-      .send({ message: "User updated successfully" });
-  } catch (error) {
-    console.log(error.message);
-    response.status(500).send({ message: error.message });
   }
-});
+);
 
 // Update One - add one bookmark to one user
 router.put("/addBookmark/:user_id/:post_id", async (request, response) => {
   try {
     const { user_id, post_id } = request.params;
 
-    const result = await User.findByIdAndUpdate(user_id, { $addToSet: { bookmarks: post_id } });
+    const result = await User.findByIdAndUpdate(user_id, {
+      $addToSet: { bookmarks: post_id },
+    });
 
     if (!result) {
       return response.status(404).json({ message: "User not found" });
     }
 
-    return response
-      .status(200)
-      .send({ message: "User updated successfully" });
+    return response.status(200).send({ message: "User updated successfully" });
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });
@@ -285,15 +276,15 @@ router.put("/removeBookmark/:user_id/:post_id", async (request, response) => {
   try {
     const { user_id, post_id } = request.params;
 
-    const result = await User.findByIdAndUpdate(user_id, { $pull: { bookmarks: post_id } });
+    const result = await User.findByIdAndUpdate(user_id, {
+      $pull: { bookmarks: post_id },
+    });
 
     if (!result) {
       return response.status(404).json({ message: "User not found" });
     }
 
-    return response
-      .status(200)
-      .send({ message: "User updated successfully" });
+    return response.status(200).send({ message: "User updated successfully" });
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });
@@ -301,59 +292,69 @@ router.put("/removeBookmark/:user_id/:post_id", async (request, response) => {
 });
 
 // Update One - add one experience to one user
-router.put("/addExperience/:user_id/:experience_id", async (request, response) => {
-  try {
-    const { user_id, experience_id } = request.params;
+router.put(
+  "/addExperience/:user_id/:experience_id",
+  async (request, response) => {
+    try {
+      const { user_id, experience_id } = request.params;
 
-    const result = await User.findByIdAndUpdate(user_id, { $addToSet: { experiences: experience_id } });
+      const result = await User.findByIdAndUpdate(user_id, {
+        $addToSet: { experiences: experience_id },
+      });
 
-    if (!result) {
-      return response.status(404).json({ message: "User not found" });
+      if (!result) {
+        return response.status(404).json({ message: "User not found" });
+      }
+
+      return response
+        .status(200)
+        .send({ message: "User updated successfully" });
+    } catch (error) {
+      console.log(error.message);
+      response.status(500).send({ message: error.message });
     }
-
-    return response
-      .status(200)
-      .send({ message: "User updated successfully" });
-  } catch (error) {
-    console.log(error.message);
-    response.status(500).send({ message: error.message });
   }
-});
+);
 
 // Update One - remove one experience from one user
-router.put("/removeExperience/:user_id/:experience_id", async (request, response) => {
-  try {
-    const { user_id, experience_id } = request.params;
+router.put(
+  "/removeExperience/:user_id/:experience_id",
+  async (request, response) => {
+    try {
+      const { user_id, experience_id } = request.params;
 
-    const result = await User.findByIdAndUpdate(user_id, { $pull: { experiences: experience_id } });
+      const result = await User.findByIdAndUpdate(user_id, {
+        $pull: { experiences: experience_id },
+      });
 
-    if (!result) {
-      return response.status(404).json({ message: "User not found" });
+      if (!result) {
+        return response.status(404).json({ message: "User not found" });
+      }
+
+      return response
+        .status(200)
+        .send({ message: "User updated successfully" });
+    } catch (error) {
+      console.log(error.message);
+      response.status(500).send({ message: error.message });
     }
-
-    return response
-      .status(200)
-      .send({ message: "User updated successfully" });
-  } catch (error) {
-    console.log(error.message);
-    response.status(500).send({ message: error.message });
   }
-});
+);
 
 // Update One - add one post to one user
 router.put("/addPost/:user_id/:post_id", async (request, response) => {
   try {
     const { user_id, post_id } = request.params;
 
-    const result = await User.findByIdAndUpdate(user_id, { $addToSet: { posts: post_id } });
+    const result = await User.findByIdAndUpdate(user_id, {
+      $addToSet: { posts: post_id },
+    });
 
     if (!result) {
       return response.status(404).json({ message: "User not found" });
     }
 
-    return response
-      .status(200)
-      .send({ message: "User updated successfully" });
+    return response.status(200).send({ message: "User updated successfully" });
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });
@@ -365,15 +366,15 @@ router.put("/removePost/:user_id/:post_id", async (request, response) => {
   try {
     const { user_id, post_id } = request.params;
 
-    const result = await User.findByIdAndUpdate(user_id, { $pull: { posts: post_id } });
+    const result = await User.findByIdAndUpdate(user_id, {
+      $pull: { posts: post_id },
+    });
 
     if (!result) {
       return response.status(404).json({ message: "User not found" });
     }
 
-    return response
-      .status(200)
-      .send({ message: "User updated successfully" });
+    return response.status(200).send({ message: "User updated successfully" });
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });
@@ -385,15 +386,15 @@ router.put("/addComment/:user_id/:comment_id", async (request, response) => {
   try {
     const { user_id, comment_id } = request.params;
 
-    const result = await User.findByIdAndUpdate(user_id, { $addToSet: { comments: comment_id } });
+    const result = await User.findByIdAndUpdate(user_id, {
+      $addToSet: { comments: comment_id },
+    });
 
     if (!result) {
       return response.status(404).json({ message: "User not found" });
     }
 
-    return response
-      .status(200)
-      .send({ message: "User updated successfully" });
+    return response.status(200).send({ message: "User updated successfully" });
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });
@@ -405,15 +406,15 @@ router.put("/removeComment/:user_id/:comment_id", async (request, response) => {
   try {
     const { user_id, comment_id } = request.params;
 
-    const result = await User.findByIdAndUpdate(user_id, { $pull: { comments: comment_id } });
+    const result = await User.findByIdAndUpdate(user_id, {
+      $pull: { comments: comment_id },
+    });
 
     if (!result) {
       return response.status(404).json({ message: "User not found" });
     }
 
-    return response
-      .status(200)
-      .send({ message: "User updated successfully" });
+    return response.status(200).send({ message: "User updated successfully" });
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });
@@ -432,9 +433,7 @@ router.delete("/deleteOne/:user_id", async (request, response) => {
       return response.status(404).json({ message: "User not found" });
     }
 
-    return response
-      .status(200)
-      .send({ message: "User deleted successfully" });
+    return response.status(200).send({ message: "User deleted successfully" });
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });

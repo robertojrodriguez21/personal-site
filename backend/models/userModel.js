@@ -20,7 +20,6 @@ const userSchema = mongoose.Schema(
       required: [true, "Please enter email"],
       unique: true,
       lowercase: true,
-      validate: [isEmail, "Please enter valid email"],
     },
     password: {
       type: String,
@@ -28,7 +27,7 @@ const userSchema = mongoose.Schema(
     },
     accessType: {
       type: Number,
-      required: true,
+      required: [true, "Please enter accessType"],
     },
     experiences: [
       {
