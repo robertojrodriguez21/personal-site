@@ -4,7 +4,7 @@ import { User } from "../models/userModel.js";
 const router = express.Router();
 
 // CREATE
-// Create One
+// Create One User
 router.post("/createUser", async (request, response) => {
   try {
     if (
@@ -25,7 +25,7 @@ router.post("/createUser", async (request, response) => {
       lastName: request.body.lastName,
       email: request.body.email,
       password: request.body.password,
-      accessType: 5000,
+      accessType: 5001,
     };
 
     const user = await User.create(newUser);
