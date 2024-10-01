@@ -103,15 +103,6 @@ router.put("/:user_id", async (request, response) => {
 // Update One - add post like to user
 router.put("/:user_id/addPostLike/:post_id", async (request, response) => {
   try {
-    if (
-      !request.body.post_id 
-    ) {
-      return response.status(400).send({
-        message:
-          "Send all required fields: post_id",
-      });
-    }
-
     const { user_id } = request.params;
 
     const result = await User.findByIdAndUpdate(user_id, { $push: { postLikes: request.body.post_id  } });
