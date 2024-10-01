@@ -5,7 +5,7 @@ const router = express.Router();
 
 // CREATE
 // Create One
-router.post("/", async (request, response) => {
+router.post("/createOne", async (request, response) => {
   try {
     if (
       !request.body.body ||
@@ -35,7 +35,7 @@ router.post("/", async (request, response) => {
 
 // READ
 // Read All
-router.get("/", async (request, response) => {
+router.get("/getAll", async (request, response) => {
   try {
     const comments = await Comment.find({});
 
@@ -50,7 +50,7 @@ router.get("/", async (request, response) => {
 });
 
 // Read One
-router.get("/:comment_id", async (request, response) => {
+router.get("/getOne/:comment_id", async (request, response) => {
   try {
     const { comment_id } = request.params;
 
@@ -65,7 +65,7 @@ router.get("/:comment_id", async (request, response) => {
 
 // UPDATE
 // Update One
-router.put("/:comment_id", async (request, response) => {
+router.put("/updateOne/:comment_id", async (request, response) => {
   try {
     if (
       !request.body.body ||
@@ -97,7 +97,7 @@ router.put("/:comment_id", async (request, response) => {
 
 // DELETE
 // Delete One
-router.delete("/:comment_id", async (request, response) => {
+router.delete("/deleteOne/:comment_id", async (request, response) => {
   try {
     const { comment_id } = request.params;
 

@@ -5,7 +5,7 @@ const router = express.Router();
 
 // CREATE
 // Create One
-router.post("/", async (request, response) => {
+router.post("/createOne", async (request, response) => {
   try {
     if (
       !request.body.title ||
@@ -42,7 +42,7 @@ router.post("/", async (request, response) => {
 
 // READ
 // Read All
-router.get("/", async (request, response) => {
+router.get("/getAll", async (request, response) => {
   try {
     const experiences = await Experience.find({});
 
@@ -57,7 +57,7 @@ router.get("/", async (request, response) => {
 });
 
 // Read One
-router.get("/:experience_id", async (request, response) => {
+router.get("/getOne/:experience_id", async (request, response) => {
   try {
     const { experience_id } = request.params;
 
@@ -72,7 +72,7 @@ router.get("/:experience_id", async (request, response) => {
 
 // UPDATE
 // Update One
-router.put("/:experience_id", async (request, response) => {
+router.put("/updateOne/:experience_id", async (request, response) => {
   try {
     if (
       !request.body.title ||
@@ -106,7 +106,7 @@ router.put("/:experience_id", async (request, response) => {
 
 // DELETE
 // Delete One
-router.delete("/:experience_id", async (request, response) => {
+router.delete("/deleteOne/:experience_id", async (request, response) => {
   try {
     const { experience_id } = request.params;
 

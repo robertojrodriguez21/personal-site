@@ -5,7 +5,7 @@ const router = express.Router();
 
 // CREATE
 // Create One
-router.post("/", async (request, response) => {
+router.post("/createOne", async (request, response) => {
   try {
     if (
       !request.body.firstName ||
@@ -39,7 +39,7 @@ router.post("/", async (request, response) => {
 
 // READ
 // Read All
-router.get("/", async (request, response) => {
+router.get("/getAll", async (request, response) => {
   try {
     const users = await User.find({});
 
@@ -54,7 +54,7 @@ router.get("/", async (request, response) => {
 });
 
 // Read One
-router.get("/:user_id", async (request, response) => {
+router.get("/getOne/:user_id", async (request, response) => {
   try {
     const { user_id } = request.params;
 
@@ -69,7 +69,7 @@ router.get("/:user_id", async (request, response) => {
 
 // UPDATE
 // Update One
-router.put("/:user_id", async (request, response) => {
+router.put("/updateOne/:user_id", async (request, response) => {
   try {
     if (
       !request.body.firstName ||
@@ -302,7 +302,7 @@ router.put("/removeBookmark/:user_id/:post_id", async (request, response) => {
 
 // DELETE
 // Delete One
-router.delete("/:user_id", async (request, response) => {
+router.delete("/deleteOne/:user_id", async (request, response) => {
   try {
     const { user_id } = request.params;
 

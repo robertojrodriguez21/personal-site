@@ -5,7 +5,7 @@ const router = express.Router();
 
 // CREATE
 // Create One
-router.post("/", async (request, response) => {
+router.post("/createOne", async (request, response) => {
   try {
     if (
       !request.body.title ||
@@ -35,7 +35,7 @@ router.post("/", async (request, response) => {
 
 // READ
 // Read All
-router.get("/", async (request, response) => {
+router.get("/getAll", async (request, response) => {
   try {
     const posts = await Post.find({});
 
@@ -50,7 +50,7 @@ router.get("/", async (request, response) => {
 });
 
 // Read One
-router.get("/:post_id", async (request, response) => {
+router.get("/getOne/:post_id", async (request, response) => {
   try {
     const { post_id } = request.params;
 
@@ -65,7 +65,7 @@ router.get("/:post_id", async (request, response) => {
 
 // UPDATE
 // Update One
-router.put("/:post_id", async (request, response) => {
+router.put("/updateOne/:post_id", async (request, response) => {
   try {
     if (
       !request.body.title ||
@@ -97,7 +97,7 @@ router.put("/:post_id", async (request, response) => {
 
 // DELETE
 // Delete One
-router.delete("/:post_id", async (request, response) => {
+router.delete("/deleteOne/:post_id", async (request, response) => {
   try {
     const { post_id } = request.params;
 
