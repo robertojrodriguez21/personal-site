@@ -100,6 +100,36 @@ router.put("/:user_id", async (request, response) => {
   }
 });
 
+// Update One - add post like to user
+router.put("/:user_id/addPostLike/:post_id", async (request, response) => {
+  try {
+    if (
+      !request.body.post_id 
+    ) {
+      return response.status(400).send({
+        message:
+          "Send all required fields: post_id",
+      });
+    }
+
+    const { user_id } = request.params;
+
+    const result = await User.findByIdAndUpdate(user_id, { $push: { likes: request.body.post_id  } });
+
+    if (!result) {
+      return response.status(404).json({ message: "User not found" });
+    }
+
+    return response
+      .status(200)
+      .send({ message: "User updated successfully" })
+      .send(response);
+  } catch (error) {
+    console.log(error.message);
+    response.status(500).send({ message: error.message });
+  }
+});
+
 // DELETE
 // Delete One
 router.delete("/:user_id", async (request, response) => {
