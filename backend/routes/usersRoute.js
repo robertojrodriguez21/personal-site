@@ -120,12 +120,12 @@ router.put("/addPostLike/:user_id/:post_id", async (request, response) => {
   }
 });
 
-// Update One - remove one post like to user
+// Update One - add one post like to user
 router.put("/removePostLike/:user_id/:post_id", async (request, response) => {
   try {
     const { user_id, post_id } = request.params;
 
-    const result = await User.findByIdAndUpdate(user_id, { $push: { postLikes: post_id}});
+    const result = await User.findByIdAndUpdate(user_id, { $pull: { postLikes: post_id, likes: post_id } });
 
     if (!result) {
       return response.status(404).json({ message: "User not found" });
