@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 // Route imports
+import authRoute from "./routes/authRoute.js";
 import usersRoute from "./routes/usersRoute.js";
 import experiencesRoute from "./routes/experiencesRoute.js";
 import postsRoute from "./routes/postsRoute.js";
@@ -22,6 +23,7 @@ app.get("/", (request, response) => {
 app.use(cors());
 
 // API call routes
+app.use("/auth", authRoute);
 app.use("/users", usersRoute);
 app.use("/experiences", experiencesRoute);
 app.use("/posts", postsRoute);
