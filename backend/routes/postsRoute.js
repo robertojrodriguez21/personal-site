@@ -100,7 +100,7 @@ router.put("/addLike/:post_id/:user_id", async (request, response) => {
   try {
     const { post_id, user_id } = request.params;
 
-    const result = await User.findByIdAndUpdate(post_id, { $addToSet: { likes: user_id } });
+    const result = await Post.findByIdAndUpdate(post_id, { $addToSet: { likes: user_id } });
 
     if (!result) {
       return response.status(404).json({ message: "Post not found" });
@@ -120,7 +120,7 @@ router.put("/removeLike/:post_id/:user_id", async (request, response) => {
   try {
     const { post_id, user_id } = request.params;
 
-    const result = await User.findByIdAndUpdate(post_id, { $pull: { likes: user_id } });
+    const result = await Post.findByIdAndUpdate(post_id, { $pull: { likes: user_id } });
 
     if (!result) {
       return response.status(404).json({ message: "Post not found" });
