@@ -2,7 +2,7 @@
 
 ## Entity Relationship Diagram (ERD)
 
-![](../images/ERD.png)
+![Entity Relationship Diagram (ERD)](../images/ERD.png)
 
 ## API Calls
 
