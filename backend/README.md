@@ -2,6 +2,35 @@
 
 ## API Calls
 
+### user is created
+/users/createOne
+
+### experience is created 
+/experiences/createOne
+/users/addExperience/:user_id/:experience_id
+
+### experience is deleted 
+/experiences/deleteOne
+/users/removeExperience/:user_id/:experience_id
+
+### post is created 
+/posts/createOne
+/users/addPost/:user_id/:post_id
+
+### post is deleted 
+/posts/deleteOne
+/users/removePost/:user_id/:post_id
+
+### comment is created 
+/comments/createOne
+/users/addComment/:user_id/:comment_id
+/posts/addComment/:post_id/:comment_id
+
+### comment is deleted 
+/comments/deleteOne
+/users/removeComment/:user_id/:comment_id
+/posts/removeComment/:post_id/:comment_id
+
 ### like is added to post 
 /users/addPostLike/:user_id/:post_id
 /posts/addLike/:post_id/:user_id
@@ -39,32 +68,3 @@
 
 ### post is unbookmarked
 /users/removeBookmark/:user_id/:post_id
-
-### user is created
-/users/createOne
-
-### experience is created 
-/experiences/createOne
-/users/addExperience/:user_id/:experience_id
-
-### experience is deleted 
-/experiences/deleteOne
-/users/removeExperience/:user_id/:experience_id
-
-### post is created 
-/posts/createOne
-/users/addPost/:user_id/:post_id
-
-### post is deleted 
-/posts/deleteOne
-/users/removePost/:user_id/:post_id
-
-### comment is created 
-/comments/createOne
-/users/addComment/:user_id/:comment_id
-/posts/addComment/:post_id/:comment_id
-
-### comment is deleted 
-/comments/deleteOne
-/users/removeComment/:user_id/:comment_id
-/posts/removeComment/:post_id/:comment_id
