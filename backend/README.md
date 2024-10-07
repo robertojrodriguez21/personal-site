@@ -8,8 +8,8 @@
 
 ### User is created
 ```
-/users/createOne
-```
+/auth/createUser
+```  
 
 ### Experience is created 
 ```
