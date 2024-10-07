@@ -1,5 +1,9 @@
 # Backend Information
 
+## Entity Relationship Diagram (ERD)
+
+![](../images/ERD.png)
+
 ## API Calls
 
 ### User is created
