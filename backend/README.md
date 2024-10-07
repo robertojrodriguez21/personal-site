@@ -3,23 +3,16 @@
 ## API Calls
 
 <details>
-<summary>How do I dropdown?</summary>
+### User is created
 <br>
 This is how you dropdown.
 <br><br>
 <pre>
-&lt;details&gt;
-&lt;summary&gt;How do I dropdown?&lt;&#47;summary&gt;
-&lt;br&gt;
-This is how you dropdown.
-&lt;&#47;details&gt;
-</pre>
-</details>
-
-### User is created
 ```
 /users/createOne
 ```  
+</pre>
+</details>
 
 ### Experience is created 
 ```
