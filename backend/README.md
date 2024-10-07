@@ -2,17 +2,10 @@
 
 ## API Calls
 
-<details>
 ### User is created
-<br>
-This is how you dropdown.
-<br><br>
-<pre>
 ```
 /users/createOne
 ```  
-</pre>
-</details>
 
 ### Experience is created 
 ```
