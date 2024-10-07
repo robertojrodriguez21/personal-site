@@ -4,8 +4,8 @@ Developed by Roberto J. Rodriguez
 
 ### Website Information
 
-Last prod update: N/A
-Last GitHub update: 10/7/2024
+- Last prod update: N/A
+- Last GitHub update: 10/7/2024
 
 ## Description
 
@@ -17,7 +17,9 @@ The application was created with MERN (MongoDB, Express, React, Node.js) Stack. 
 
 ## Frontend Information
 
-The frontend portion of the application was developed with [React](https://react.dev/) and [Node.js](https://nodejs.org/en). Find the folder [here](https://github.com/robertojrodriguez21/personal-site/tree/master/frontend).
+The frontend portion of the application was developed with [React](https://react.dev/) and [Node.js](https://nodejs.org/en). 
+
+Find the folder [here](https://github.com/robertojrodriguez21/personal-site/tree/master/frontend).
 
 ## Backend Information
 
@@ -27,27 +29,31 @@ The backend portion of the application was developed with [MongoDB](https://www.
 
 ## Future Updates
 
-### Features
+## Features
 
-#### In Progress (By Priority)
+### In Progress (By Priority)
 
 - [ ] Working on authentication
 - [ ] Deploy
 
-#### Future Features (By Priority)
-
-- [ ] A
-- [ ] B
-- [ ] C
-
-### Bugs
-
-#### In Progress (By Priority)
+### Future Features (By Priority)
 
 - [ ] A
 
-#### Fix Later (By Priority)
+### Done
 
 - [ ] A
-- [ ] B
-- [ ] C
+
+## Bugs
+
+### In Progress (By Priority)
+
+- [ ] A
+
+### Fix Later (By Priority)
+
+- [ ] A
+
+### Done
+
+- [ ] A
