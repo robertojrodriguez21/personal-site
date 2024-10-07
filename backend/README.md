@@ -1,4 +1,4 @@
-# Backend Information
+# Backend
 
 ## Entity Relationship Diagram (ERD)
 
