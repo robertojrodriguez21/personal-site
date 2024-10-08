@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import bcrypt from "bcrypt"
 
 const userSchema = mongoose.Schema(
   {
@@ -103,10 +104,11 @@ const userSchema = mongoose.Schema(
   }
 );
 
-// Before sending object to database
-userSchema.post('save', function (doc, next) {
-  console.log('new user created', doc)
-  
+// Function before user created and saved to database
+userSchema.pre('save', async function (next) {
+  const salt = await bcrypt.genSalt()
+  this.password = await bcrypt.hash(this.password, salt)
+
   next()
 })
 
