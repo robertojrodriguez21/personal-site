@@ -1,8 +1,10 @@
 # Personal Site
 
-Developed by Roberto J. Rodriguez
+Developed by Roberto J. Rodriguez | LinkedIn
 
 ### Website Information
+
+## [Deployed Site (Not Yet Available)](https://github.com/robertojrodriguez21/personal-site)
 
 - Last prod update: N/A
 - Last GitHub update: 10/7/2024
