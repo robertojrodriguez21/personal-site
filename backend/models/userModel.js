@@ -104,11 +104,10 @@ const userSchema = mongoose.Schema(
   }
 );
 
-// Function before user created and saved to database
+// Function hashing user password before creation and save to database
 userSchema.pre('save', async function (next) {
   const salt = await bcrypt.genSalt()
   this.password = await bcrypt.hash(this.password, salt)
-
   next()
 })
 
