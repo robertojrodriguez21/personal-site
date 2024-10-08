@@ -11,16 +11,15 @@ Developed by Roberto J. Rodriguez
 
 ## Description
 
-This application is my personal website. The website will consist of my experiences, personal projects, and a blog with a commenting and rating system.
+Welcome to my personal portfolio website, designed to showcase my professional journey and creative projects while providing valuable insights through my blog. Tailored for recruiters, this site features a comprehensive overview of my work experience, skills, and personal projects that highlight my expertise and passion.
 
-The application was created with MERN (MongoDB, Express, React, Node.js) Stack. It will also be styled with Bootstrap using a template from bootswatch.com.
+With a mobile-first design optimized for the iPhone 14 Pro Max, you can easily navigate through my information on the go, ensuring a seamless experience whether you're on your phone or desktop. Explore my blog, where I share thoughts on industry trends, project updates, and personal reflections that illustrate my continuous growth and engagement in my field.
 
-The website is mobile first approach.
-Developed for iPhone 14 Pro Max.
+Discover who I am, what I do, and how I can contribute to your team. Your next great hire is just a click away!
 
 ## Frontend Information
 
-The frontend portion of the application was developed with [React](https://react.dev/) and [Node.js](https://nodejs.org/en). Website was style with the [Lux theme from bootswatch.com](https://bootswatch.com/lux/).
+The frontend portion of the application was developed with [React](https://react.dev/) and [Node.js](https://nodejs.org/en). Website was styled with the [Lux theme from bootswatch.com](https://bootswatch.com/lux/).
 
 Find the folder [here](https://github.com/robertojrodriguez21/personal-site/tree/master/frontend).
 
