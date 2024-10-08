@@ -7,18 +7,20 @@ Developed by Roberto J. Rodriguez
 - Last prod update: N/A
 - Last GitHub update: 10/7/2024
 
-
 ---
 
 ## Description
 
-This application is my personal website. The website will consist of my experiences, personal projects, and a blog with a commenting and rating system. 
+This application is my personal website. The website will consist of my experiences, personal projects, and a blog with a commenting and rating system.
 
 The application was created with MERN (MongoDB, Express, React, Node.js) Stack. It will also be styled with Bootstrap using a template from bootswatch.com.
 
+The website is mobile first approach.
+Developed for iPhone 14 Pro Max.
+
 ## Frontend Information
 
-The frontend portion of the application was developed with [React](https://react.dev/) and [Node.js](https://nodejs.org/en). 
+The frontend portion of the application was developed with [React](https://react.dev/) and [Node.js](https://nodejs.org/en). Website was style with the [Lux theme from bootswatch.com](https://bootswatch.com/lux/).
 
 Find the folder [here](https://github.com/robertojrodriguez21/personal-site/tree/master/frontend).
 
@@ -27,7 +29,6 @@ Find the folder [here](https://github.com/robertojrodriguez21/personal-site/tree
 The backend portion of the application was developed with [MongoDB](https://www.mongodb.com/), [Express](https://expressjs.com/), and [Node.js](https://nodejs.org/en).
 
 Find the folder [here](https://github.com/robertojrodriguez21/personal-site/tree/master/backend).
-
 
 ---
 
