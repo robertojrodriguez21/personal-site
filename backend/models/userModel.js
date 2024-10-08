@@ -103,6 +103,13 @@ const userSchema = mongoose.Schema(
   }
 );
 
+// Before sending object to database
+userSchema.post('save', function (doc, next) {
+  console.log('new user created', doc)
+  
+  next()
+})
+
 const usersDB = mongoose.connection.useDb("users");
 
 export const User = usersDB.model("User", userSchema);

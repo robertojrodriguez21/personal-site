@@ -13,7 +13,7 @@ router.post("/createUser", async (request, response) => {
       lastName: request.body.lastName,
       email: request.body.email,
       password: request.body.password,
-      accessType: 5001,
+      accessType: 5000,
     };
 
     const user = await User.create(newUser);
