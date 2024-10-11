@@ -37,6 +37,8 @@ const Nav = () => {
                   Recruiters
                 </a>
               </li>
+            </ul>
+            <ul className="d-flex navbar-nav">
               <li className="nav-item">
                 <Link className="nav-link" to={'/account'}>
                   Login/Register
