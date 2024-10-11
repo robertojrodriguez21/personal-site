@@ -13,6 +13,7 @@ const App = () => {
         <Nav />
       </header>
       <main className="container">
+        <br />
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/account" element={<Account />}></Route>
