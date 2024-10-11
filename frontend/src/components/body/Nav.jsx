@@ -4,9 +4,9 @@ const Nav = () => {
   return (
     <nav>
       <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
-        <div class="container-fluid">
+        <div class="container">
           <a class="navbar-brand" href="#">
-            Navbar
+            Roberto J. Rodriguez
           </a>
           <button
             class="navbar-toggler"
@@ -22,24 +22,18 @@ const Nav = () => {
           <div class="collapse navbar-collapse" id="navbarColor02">
             <ul class="navbar-nav me-auto">
               <li class="nav-item">
-                <a class="nav-link active" href="#">
-                  Home
-                  <span class="visually-hidden">(current)</span>
+                <a class="nav-link" href="#">
+                  Blog
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">
-                  Features
+                  Projects
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">
-                  Pricing
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  About
+                  Recruiters
                 </a>
               </li>
               <li class="nav-item dropdown">
@@ -51,35 +45,42 @@ const Nav = () => {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  Dropdown
+                  Account
                 </a>
                 <div class="dropdown-menu">
                   <a class="dropdown-item" href="#">
-                    Action
+                    Login
                   </a>
                   <a class="dropdown-item" href="#">
-                    Another action
+                    Register
                   </a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  href="#"
+                  role="button"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  Hello NAME!
+                </a>
+                <div class="dropdown-menu">
                   <a class="dropdown-item" href="#">
-                    Something else here
+                    Blog Activity
                   </a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#">
-                    Separated link
+                    Account Settings
+                  </a>
+                  <a class="dropdown-item" href="#">
+                    Logout
                   </a>
                 </div>
               </li>
             </ul>
-            <form class="d-flex">
-              <input
-                class="form-control me-sm-2"
-                type="search"
-                placeholder="Search"
-              ></input>
-              <button class="btn btn-secondary my-2 my-sm-0" type="submit">
-                Search
-              </button>
-            </form>
           </div>
         </div>
       </nav>

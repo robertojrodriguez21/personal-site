@@ -7,16 +7,16 @@ import Home from './pages/Home'
 
 const App = () => {
   return (
-    <>
+    <div>
       <header>
         <Nav />
       </header>
-      <main>
+      <main className="container">
         <Routes>
           <Route path="/" element={<Home />}></Route>
         </Routes>
       </main>
-    </>
+    </div>
   )
 }
 
