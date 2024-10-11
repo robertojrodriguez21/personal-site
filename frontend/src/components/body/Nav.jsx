@@ -6,9 +6,9 @@ const Nav = () => {
     <nav>
       <nav className="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
         <div className="container">
-          <a className="navbar-brand" href="#">
+          <Link className="navbar-brand" to={'/'}>
             Roberto J. Rodriguez
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -23,19 +23,19 @@ const Nav = () => {
           <div className="collapse navbar-collapse" id="navbarColor02">
             <ul className="navbar-nav me-auto">
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <Link className="nav-link" to={'/blog'}>
                   Blog
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <Link className="nav-link" to={'/projects'}>
                   Projects
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <Link className="nav-link" to={'/recruiters'}>
                   Recruiters
-                </a>
+                </Link>
               </li>
             </ul>
             <ul className="d-flex navbar-nav">
@@ -56,13 +56,13 @@ const Nav = () => {
                   Hello NAME!
                 </a>
                 <div className="dropdown-menu">
-                  <a className="dropdown-item" href="#">
+                  <Link className="dropdown-item" to={'/activity'}>
                     Blog Activity
-                  </a>
+                  </Link>
                   <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="#">
-                    Account Settings
-                  </a>
+                  <Link className="dropdown-item" to={'/myaccount'}>
+                    My Account
+                  </Link>
                   <a className="dropdown-item" href="#">
                     Logout
                   </a>
