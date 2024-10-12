@@ -1,24 +1,26 @@
 import React from 'react'
 
+import Login from '../components/account/Login'
+
 const Account = () => {
   return (
     <>
-      <ul class="nav nav-tabs" role="tablist">
-        <li class="nav-item" role="presentation">
+      <ul className="nav nav-tabs" role="tablist">
+        <li className="nav-item" role="presentation">
           <a
-            class="nav-link active"
+            className="nav-link active"
             data-bs-toggle="tab"
             href="#login"
             aria-selected="false"
             role="tab"
-            tabindex="-1"
+            tabIndex="-1"
           >
             Login
           </a>
         </li>
-        <li class="nav-item" role="presentation">
+        <li className="nav-item" role="presentation">
           <a
-            class="nav-link"
+            className="nav-link"
             data-bs-toggle="tab"
             href="#register"
             aria-selected="true"
@@ -28,19 +30,11 @@ const Account = () => {
           </a>
         </li>
       </ul>
-      <div id="myTabContent" class="tab-content">
-        <div class="tab-pane fade" id="login" role="tabpanel">
-          <p>
-            Raw denim you probably haven't heard of them jean shorts Austin.
-            Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache
-            cliche tempor, williamsburg carles vegan helvetica. Reprehenderit
-            butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi,
-            qui irure terry richardson ex squid. Aliquip placeat salvia cillum
-            iphone. Seitan aliquip quis cardigan american apparel, butcher
-            voluptate nisi qui.
-          </p>
+      <div id="myTabContent" className="tab-content">
+        <div className="tab-pane fade active show" id="login" role="tabpanel">
+          <Login />
         </div>
-        <div class="tab-pane fade active show" id="register" role="tabpanel">
+        <div className="tab-pane fade" id="register" role="tabpanel">
           <p>
             Food truck fixie locavore, accusamus mcsweeney's marfa nulla
             single-origin coffee squid. Exercitation +1 labore velit, blog
