@@ -7,12 +7,12 @@ const Login = () => {
     password: ''
   })
 
-  const handleLogin = (e) => {
-    e.preventDefault()
-  }
-
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
+  }
+
+  const handleLogin = (e) => {
+    e.preventDefault()
   }
 
   return (
@@ -20,7 +20,7 @@ const Login = () => {
       <fieldset>
         <div>
           <label htmlFor="email" className="form-label mt-4">
-            Email address
+            Email
           </label>
           <input
             onChange={handleChange}
@@ -32,9 +32,6 @@ const Login = () => {
             placeholder="Enter email"
             required
           ></input>
-          <small id="emailHelp" className="form-text text-muted">
-            We'll never share your email with anyone else.
-          </small>
         </div>
         <div>
           <label htmlFor="password" className="form-label mt-4">
@@ -46,8 +43,7 @@ const Login = () => {
             className="form-control"
             id="password"
             name="password"
-            placeholder="Password"
-            autoComplete="off"
+            placeholder="Enter Password"
             required
           ></input>
         </div>
@@ -58,7 +54,7 @@ const Login = () => {
             className="btn btn-primary"
             onClick={handleLogin}
           >
-            Submit
+            Login
           </button>
         </div>
       </fieldset>
