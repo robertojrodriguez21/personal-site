@@ -11,6 +11,10 @@ const Login = () => {
     e.preventDefault()
   }
 
+  const handleChange = (e) => {
+    setFormValues({ ...formValues, [e.target.name]: e.target.value })
+  }
+
   return (
     <form>
       <fieldset>
@@ -19,6 +23,7 @@ const Login = () => {
             Email address
           </label>
           <input
+            onChange={handleChange}
             type="email"
             className="form-control"
             id="email"
@@ -36,6 +41,7 @@ const Login = () => {
             Password
           </label>
           <input
+            onChange={handleChange}
             type="password"
             className="form-control"
             id="password"
@@ -44,6 +50,9 @@ const Login = () => {
             autoComplete="off"
             required
           ></input>
+        </div>
+        <br />
+        <div>
           <button
             type="submit"
             className="btn btn-primary"

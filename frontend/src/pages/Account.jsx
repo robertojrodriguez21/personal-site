@@ -4,7 +4,7 @@ import Login from '../components/account/Login'
 
 const Account = () => {
   return (
-    <>
+    <div className="col-lg-4 offset-lg-4 col-10 offset-1">
       <ul className="nav nav-tabs" role="tablist">
         <li className="nav-item" role="presentation">
           <a
@@ -46,7 +46,7 @@ const Account = () => {
           </p>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 
