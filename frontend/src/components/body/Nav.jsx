@@ -2,6 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const Nav = () => {
+  const handleLogout = (e) => {
+    e.preventDefault()
+  }
+
   return (
     <nav className="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
       <div className="container">
@@ -47,7 +51,6 @@ const Nav = () => {
               <a
                 className="nav-link dropdown-toggle"
                 data-bs-toggle="dropdown"
-                href="#"
                 role="button"
                 aria-haspopup="true"
                 aria-expanded="false"
@@ -62,7 +65,11 @@ const Nav = () => {
                 <Link className="dropdown-item" to={'/myaccount'}>
                   My Account
                 </Link>
-                <a className="dropdown-item" href="#">
+                <a
+                  className="dropdown-item"
+                  onClick={handleLogout}
+                  style={{ cursor: 'pointer' }}
+                >
                   Logout
                 </a>
               </div>

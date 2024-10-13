@@ -9,18 +9,20 @@ import Account from './pages/Account'
 
 const App = () => {
   return (
-    <div>
+    <div
+      style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}
+    >
       <header>
         <Nav />
       </header>
-      <main className="container">
+      <main className="container" style={{ flex: '1 0 auto' }}>
         <br />
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/account" element={<Account />}></Route>
         </Routes>
       </main>
-      <footer>
+      <footer style={{ flexShrink: '0' }}>
         <br />
         <Footer />
       </footer>
