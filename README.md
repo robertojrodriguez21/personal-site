@@ -1,13 +1,13 @@
 # Personal Site
 
-Developed by Roberto J. Rodriguez | LinkedIn
+Developed by Roberto J. Rodriguez | [LinkedIn](https://www.linkedin.com/in/robertojrodriguez21/)
 
 ### Website Information
 
 [Deployed Site (Not Yet Available)](https://github.com/robertojrodriguez21/personal-site)
 
 - Last prod update: N/A
-- Last GitHub update: 10/7/2024
+- Last GitHub update: 10/16/2024
 
 ---
 
