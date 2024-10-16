@@ -10,7 +10,8 @@ const Register = () => {
     password: '',
     confirmPassword: ''
   })
-  const [passwordError, setPasswordError] = useState('')
+  const [passwordComparisonError, setPasswordComparisonError] = useState('')
+  const [passwordLengthError, setPasswordLengthError] = useState('')
   const [
     registerButtonDisablePasswordError,
     setRegisterButtonDisablePasswordError
@@ -21,17 +22,34 @@ const Register = () => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
   }
 
-  // Password comparison
-  useEffect(() => {
+  const comparePasswords = () => {
     if (formValues.password != formValues.confirmPassword) {
-      setPasswordError('Passwords do not match!')
+      setPasswordComparisonError('Passwords do not match!')
       setRegisterButtonDisablePasswordError(true)
-      console.log('Passwords do not match!')
     } else {
-      setPasswordError('')
+      setPasswordComparisonError('')
       setRegisterButtonDisablePasswordError(false)
-      console.log('Passwords match!')
     }
+  }
+
+  const checkPasswordLength = () => {
+    if (formValues.password || formValues.confirmPassword) {
+      if (formValues.password.length < 8) {
+        setPasswordLengthError('Passwords needs to be at least 8 characters!')
+        setRegisterButtonDisablePasswordError(true)
+        comparePasswords()
+      } else {
+        setPasswordLengthError('')
+        setRegisterButtonDisablePasswordError(false)
+        comparePasswords()
+      }
+    }
+  }
+
+  // Password comparison and length check
+  useEffect(() => {
+    comparePasswords()
+    checkPasswordLength()
   })
 
   // User registration
@@ -117,6 +135,7 @@ const Register = () => {
             placeholder="Enter Password"
             required
           ></input>
+          <p className="text-danger">{passwordLengthError}</p>
         </div>
         <div>
           <label htmlFor="password" className="form-label mt-4">
@@ -132,7 +151,7 @@ const Register = () => {
             placeholder="Confirm Password"
             required
           ></input>
-          <p className="text-danger">{passwordError}</p>
+          <p className="text-danger">{passwordComparisonError}</p>
         </div>
         <br />
         {registerButtonDisablePasswordError ? (
