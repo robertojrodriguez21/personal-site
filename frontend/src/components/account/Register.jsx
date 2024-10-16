@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const Register = () => {
   const [formValues, setFormValues] = useState({
@@ -7,17 +7,39 @@ const Register = () => {
     middleName: '',
     lastName: '',
     email: '',
-    password: ''
+    password: '',
+    confirmPassword: ''
   })
+  const [passwordError, setPasswordError] = useState('')
+  const [
+    registerButtonDisablePasswordError,
+    setRegisterButtonDisablePasswordError
+  ] = useState(false)
 
+  // Handle form inputs
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
   }
 
-  const handleLogin = (e) => {
+  // Password comparison
+  useEffect(() => {
+    if (formValues.password != formValues.confirmPassword) {
+      setPasswordError('Passwords do not match!')
+      setRegisterButtonDisablePasswordError(true)
+      console.log('Passwords do not match!')
+    } else {
+      setPasswordError('')
+      setRegisterButtonDisablePasswordError(false)
+      console.log('Passwords match!')
+    }
+  })
+
+  // User registration
+  const handleRegistration = (e) => {
     e.preventDefault()
   }
 
+  // Component
   return (
     <form>
       <fieldset>
@@ -31,6 +53,7 @@ const Register = () => {
           </label>
           <input
             onChange={handleChange}
+            value={formValues.firstName}
             className="form-control"
             id="firstName"
             name="firstName"
@@ -44,6 +67,7 @@ const Register = () => {
           </label>
           <input
             onChange={handleChange}
+            value={formValues.middleName}
             className="form-control"
             id="middleName"
             name="middleName"
@@ -56,6 +80,7 @@ const Register = () => {
           </label>
           <input
             onChange={handleChange}
+            value={formValues.lastName}
             className="form-control"
             id="lastName"
             name="lastName"
@@ -69,6 +94,7 @@ const Register = () => {
           </label>
           <input
             onChange={handleChange}
+            value={formValues.email}
             type="email"
             className="form-control"
             id="email"
@@ -83,6 +109,7 @@ const Register = () => {
           </label>
           <input
             onChange={handleChange}
+            value={formValues.password}
             type="password"
             className="form-control"
             id="password"
@@ -97,24 +124,34 @@ const Register = () => {
           </label>
           <input
             onChange={handleChange}
-            type="confirmPassword"
+            value={formValues.confirmPassword}
+            type="password"
             className="form-control"
             id="confirmPassword"
             name="confirmPassword"
             placeholder="Confirm Password"
             required
           ></input>
+          <p className="text-danger">{passwordError}</p>
         </div>
         <br />
-        <div>
-          <button
-            type="submit"
-            className="btn btn-primary"
-            onClick={handleLogin}
-          >
-            Register
-          </button>
-        </div>
+        {registerButtonDisablePasswordError ? (
+          <div>
+            <button type="submit" className="btn btn-primary" disabled>
+              Register
+            </button>
+          </div>
+        ) : (
+          <div>
+            <button
+              type="submit"
+              className="btn btn-primary"
+              onClick={handleRegistration}
+            >
+              Register
+            </button>
+          </div>
+        )}
       </fieldset>
     </form>
   )
